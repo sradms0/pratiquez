@@ -16,7 +16,7 @@ export default function Home(props) {
   return (
     <div>
       <Nav api={props.api} user={props.user} userState={props.userState}/>
-      <Route exact path='/home' render={ () => <Main user={props.user}/> }/>
+      <Route exact path='/home' render={ () => <Main api={props.api} user={props.user}/> }/>
       <Route path='/home/courses' render={ () => <div>{'courses'}</div> }/>
       <Route path='/home/sections' render={ () => <div>{'sections'}</div> }/>
       <Route path='/home/notes' render={ () => <div>{'notes'}</div> }/>
