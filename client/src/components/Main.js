@@ -1,25 +1,44 @@
 import React, { Component } from 'react';
 import { Container, Header, Accordion, Icon, Divider} from 'semantic-ui-react'
 
+import CourseList from './CourseList'
+
 export default class Main extends Component {
   state = { 
     activeIndex: -1,
-    courses: 0,
-    sections: 0,
-    notes: 0,
-    terms: 0
+    courses:  {data: null, count: 0},
+    sections: {data: null, count: 0},
+    terms:    {data: null, count: 0},
+    notes:    {data: null, count: 0}
   }
+
   componentDidMount() {
-    const { api } = this.props;
     this.setCount();
   }
 
   handleClick = (e, titleProps) => {
-    const { index } = titleProps
+    const { index, type } = titleProps
     const { activeIndex } = this.state
     const newIndex = activeIndex === index ? -1 : index
 
     this.setState({ activeIndex: newIndex })
+    
+    this.fetchListHandler(type);
+  }
+
+  fetchListHandler(type) {
+    return {
+      'courses': this.coursesListHandler(),
+    }
+    [type];
+  }
+
+  coursesListHandler = e => {
+    this.props.api.courses.all()
+      .then(res => {
+        this.setState({ courses: {data: [...res.data]} });
+      })
+      .catch(err => this.props.errState('set', err));
   }
 
   // get nested count of terms and notes from sections
@@ -38,10 +57,10 @@ export default class Main extends Component {
     });
 
     this.setState({
-      courses: courses.length,
-      sections: sections.length,
-      notes: notes,
-      terms: terms
+      courses:  { count: courses.length },
+      sections: { count: sections.length },
+      notes:    { count: notes },
+      terms:    { count: terms }
     });
   }
 
@@ -51,20 +70,18 @@ export default class Main extends Component {
     return (
       <Container align='center'>
         <Accordion>
-          <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+          <Accordion.Title type='courses' active={activeIndex === 0} index={0} onClick={this.handleClick}>
             <Icon name='book' size={iconSize}/>
-            <span>Courses: {courses}</span>
+            <span>Courses: {courses.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <p>
-              courses listed
-            </p>
+            <CourseList data={this.state.courses.data}/>
           </Accordion.Content>
           <Divider />
 
           <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
             <Icon name='bookmark' size={iconSize}/>
-            <span>Sections: {sections}</span>
+            <span>Sections: {sections.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
             <p>
@@ -75,7 +92,7 @@ export default class Main extends Component {
 
           <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
             <Icon name='pencil' size={iconSize}/>
-            <span>Notes: {notes}</span>
+            <span>Notes: {notes.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 2}>
             <p>
@@ -86,7 +103,7 @@ export default class Main extends Component {
 
           <Accordion.Title active={activeIndex === 3} index={3} onClick={this.handleClick}>
             <Icon name='question' size={iconSize}/>
-            <span>Terms: {terms}</span>
+            <span>Terms: {terms.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 3}>
             <p>
