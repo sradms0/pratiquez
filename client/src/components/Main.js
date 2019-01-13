@@ -75,7 +75,7 @@ export default class Main extends Component {
             <span>Courses: {courses.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <CourseList data={this.state.courses.data}/>
+            <CourseList api={this.props.api} data={this.state.courses.data}/>
           </Accordion.Content>
           <Divider />
 
