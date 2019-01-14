@@ -25,19 +25,12 @@ export default class Main extends Component {
   }
 
   fetchListHandler = type => {
-    return {
-      'courses': this.coursesListHandler()
-    }
-    [type];
-  }
-
-  coursesListHandler = e => {
-    this.props.api.courses.all()
+    this.props.api[type].all()
       .then(res => {
-        this.setState({ courses: {data: [...res.data], count: res.data.length} });
+        this.setState({ [type]: {data: [...res.data], count: res.data.length} });
       })
       .catch(err => this.props.errState('set', err));
-  };
+  }
 
   render() {
     const { activeIndex, courses, sections, notes, terms } = this.state;
