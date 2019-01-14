@@ -17,6 +17,7 @@ export const courses = {
 
 export const sections = {
   all: () => axios.get('/api/sections'),
+  allCourseSections: courseId => axios.get(`/api/courses/${courseId}/sections`),
   single: (courseId, sectionId) => axios.get(`/api/courses/${courseId}/sections/${sectionId}`),
   update: (sectionId, data) => axios.put(`/api/sections/${sectionId}`, data),
   delete: sectionId => axios.delete(`/api/sections/${sectionId}`),
