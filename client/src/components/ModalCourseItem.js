@@ -24,7 +24,7 @@ export default function ModalCourseItem(props) {
               <List.Header>
                 sections: {props.sectionsCount}
               </List.Header>
-              {props.sectionsAddView()}
+              {props.sectionsCount ? props.sectionsAddView() : null}
             </List.Item>
         </List>
       </Modal.Content>
