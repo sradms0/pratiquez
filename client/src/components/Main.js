@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Accordion, Icon, Divider} from 'semantic-ui-react'
 
 import CourseList from './CourseList'
+import SectionList from './SectionList'
 
 export default class Main extends Component {
   state = { 
@@ -13,7 +14,7 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
-    this.fetchListHandler('courses');
+    this.fetchAllLists();
   }
 
   handleClick = (e, titleProps) => {
@@ -30,6 +31,11 @@ export default class Main extends Component {
         this.setState({ [type]: {data: [...res.data], count: res.data.length} });
       })
       .catch(err => this.props.errState('set', err));
+  }
+
+  fetchAllLists = () => {
+    ['courses', 'sections', 'terms']
+      .forEach(i => this.fetchListHandler(i));
   }
 
   render() {
@@ -52,9 +58,7 @@ export default class Main extends Component {
             <span>Sections: {sections.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
-            <p>
-              sections listed
-            </p>
+            <SectionList api={this.props.api} data={sections.data} updateList={this.fetchListHandler}/>
           </Accordion.Content>
           <Divider />
 
