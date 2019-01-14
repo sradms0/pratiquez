@@ -13,4 +13,12 @@ export const courses = {
   update: (courseId, data) => axios.put(`/api/courses/${courseId}`, data),
   delete: courseId => axios.delete(`/api/courses/${courseId}`),
   register: data => axios.post('/api/courses', data)
-}
+};
+
+export const sections = {
+  all: () => axios.get('/api/sections'),
+  single: (courseId, sectionId) => axios.get(`/api/courses/${courseId}/sections/${sectionId}`),
+  update: (sectionId, data) => axios.put(`/api/sections/${sectionId}`, data),
+  delete: sectionId => axios.delete(`/api/sections/${sectionId}`),
+  register: data => axios.post('/api/sections', data)
+};
