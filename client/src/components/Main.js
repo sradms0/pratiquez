@@ -13,22 +13,20 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
-    this.setCount();
+    this.fetchListHandler('courses');
   }
 
   handleClick = (e, titleProps) => {
-    const { index, type } = titleProps
+    const { index } = titleProps
     const { activeIndex } = this.state
     const newIndex = activeIndex === index ? -1 : index
 
     this.setState({ activeIndex: newIndex })
-    
-    this.fetchListHandler(type);
   }
 
-  fetchListHandler(type) {
+  fetchListHandler = type => {
     return {
-      'courses': this.coursesListHandler(),
+      'courses': this.coursesListHandler()
     }
     [type];
   }
@@ -36,33 +34,10 @@ export default class Main extends Component {
   coursesListHandler = e => {
     this.props.api.courses.all()
       .then(res => {
-        this.setState({ courses: {data: [...res.data]} });
+        this.setState({ courses: {data: [...res.data], count: res.data.length} });
       })
       .catch(err => this.props.errState('set', err));
-  }
-
-  // get nested count of terms and notes from sections
-  setCount = () => {
-    const count = (obj, key) => (
-      obj[ Object.keys(obj) [Object.keys(obj).indexOf(key)]  ].length
-    );
-
-    const { courses } = this.props.user
-    const { sections } = courses[0];
-    let terms = 0;
-    let notes = 0;
-    sections.forEach(i => {
-      terms += count(i, 'terms');
-      notes += count(i, 'notes');
-    });
-
-    this.setState({
-      courses:  { count: courses.length },
-      sections: { count: sections.length },
-      notes:    { count: notes },
-      terms:    { count: terms }
-    });
-  }
+  };
 
   render() {
     const { activeIndex, courses, sections, notes, terms } = this.state;
@@ -70,12 +45,12 @@ export default class Main extends Component {
     return (
       <Container align='center'>
         <Accordion>
-          <Accordion.Title type='courses' active={activeIndex === 0} index={0} onClick={this.handleClick}>
+          <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
             <Icon name='book' size={iconSize}/>
             <span>Courses: {courses.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <CourseList api={this.props.api} data={this.state.courses.data}/>
+            <CourseList api={this.props.api} data={courses.data} updateList={this.fetchListHandler}/>
           </Accordion.Content>
           <Divider />
 
