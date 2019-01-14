@@ -6,6 +6,15 @@ const Section   = require('../models/section');
 const User      = require('../models/user');
 
 exports.allTerms = (req, res, next) => {
+  // find all terms under user
+  Term.find({ user: req.session.userId })
+    .populate({ path: 'section', select: 'title'})
+    .populate({ path: 'user', select: 'email'})
+    .then(term => res.json(term))
+    .catch(err => next(err));
+
+};
+exports.allSectionTerms = (req, res, next) => {
   // find all terms for section
   Term.find({ section: req.params.sectionId })
     .populate({ path: 'section', select: 'title'})
