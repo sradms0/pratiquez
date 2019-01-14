@@ -7,7 +7,7 @@ export default function CourseList(props) {
   if (props.data) {
     const results = props.data;
     let courseItems = results.map(courseData => 
-      <CourseItem course={courseData} key={courseData._id}/>
+      <CourseItem api={props.api} course={courseData} updateList={props.updateList} key={courseData._id}/>
     );
     return (
       <Card.Group centered>
