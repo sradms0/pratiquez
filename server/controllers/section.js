@@ -6,6 +6,15 @@ const Course    = require('../models/course');
 const User      = require('../models/user');
 
 exports.allSections = (req, res, next) => {
+  // get all sections under user
+  Section.find({ user: req.session.userId })
+    .populate({ path: 'course', select: 'title'})
+    .populate({ path: 'user', select: 'email'})
+    .then(courses => res.json(courses))
+    .catch(err => next(err));
+};
+
+exports.allCourseSections= (req, res, next) => {
   // find all sections for course
   Section.find({ course: req.params.courseId })
     .populate({ path: 'course', select: 'title'})
