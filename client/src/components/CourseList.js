@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 
 import CourseItem from './CourseItem';
 
@@ -10,9 +10,9 @@ export default function CourseList(props) {
       <CourseItem api={props.api} course={courseData} updateList={props.updateList} key={courseData._id}/>
     );
     return (
-      <Card.Group centered>
+      <List divided relaxed>
         {courseItems}
-      </Card.Group>
+      </List>
         
     );
   }
