@@ -32,3 +32,12 @@ export const terms = {
   delete: termId => axios.delete(`/api/terms/${termId}`),
   register: data => axios.post('/api/terms', data)
 };
+
+export const notes = {
+  all: () => axios.get('/api/notes'),
+  allSectionTerms: sectionId => axios.get(`/api/sections/${sectionId}/notes`),
+  single: (sectionId, noteId) => axios.get(`/api/sections/${sectionId}/notes/${noteId}`),
+  update: (noteId, data) => axios.put(`/api/notes/${noteId}`, data),
+  delete: noteId => axios.delete(`/api/notes/${noteId}`),
+  register: data => axios.post('/api/notes', data)
+};
