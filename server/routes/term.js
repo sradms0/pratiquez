@@ -11,7 +11,7 @@ module.exports = app => {
     .get(middleware.loginRequired, controller.allSectionTerms)
     .post(middleware.loginRequired, controller.registerTerm);
 
-  app.route('/api/sections/:sectionId/terms/:termId')
+  app.route('/api/terms/:termId')
     .get(middleware.loginRequired, controller.singleTerm)
     .put(middleware.loginRequired, controller.updateTerm)
     .delete(middleware.loginRequired, controller.deleteTerm);
