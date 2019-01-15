@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Header, Accordion, Icon, Divider} from 'semantic-ui-react'
+import { Container, Header, Accordion, Icon, Divider} from 'semantic-ui-react';
 
-import CourseList from './CourseList'
-import SectionList from './SectionList'
+import CourseList from './CourseList';
+import SectionList from './SectionList';
+import TermList from './TermList';
 
 export default class Main extends Component {
   state = { 
@@ -78,9 +79,7 @@ export default class Main extends Component {
             <span>Terms: {terms.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 3}>
-            <p>
-              terms listed
-            </p>
+            <TermList api={this.props.api} data={terms.data} updateList={this.fetchListHandler}/>
           </Accordion.Content>
           <Divider />
         </Accordion>
