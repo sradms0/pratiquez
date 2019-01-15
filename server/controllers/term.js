@@ -8,7 +8,9 @@ const User      = require('../models/user');
 exports.allTerms = (req, res, next) => {
   // find all terms under user
   Term.find({ user: req.session.userId })
-    .populate({ path: 'section', select: 'title'})
+    .populate({ path: 'section',
+      populate: {path: 'course'}
+    })
     .populate({ path: 'user', select: 'email'})
     .then(term => res.json(term))
     .catch(err => next(err));
@@ -17,7 +19,9 @@ exports.allTerms = (req, res, next) => {
 exports.allSectionTerms = (req, res, next) => {
   // find all terms for section
   Term.find({ section: req.params.sectionId })
-    .populate({ path: 'section', select: 'title'})
+    .populate({ path: 'section',
+      populate: {path: 'course'}
+    })
     .populate({ path: 'user', select: 'email'})
     .then(term => res.json(term))
     .catch(err => next(err));
