@@ -21,6 +21,13 @@ import VideoSearch from './components/VideoSearch';
 /*                         *\
  * TESTING VideoSearch Component *
 /*                         */
+/*                         *\
+ * TESTING ImageSearch Component *
+/*                         */
+import ImageSearch from './components/ImageSearch';
+/*                         *\
+ * TESTING ImageSearch Component *
+/*                         */
 
 export default class App extends Component {
   state = {
@@ -55,6 +62,8 @@ export default class App extends Component {
 
           {/* testing video search functionality */}
           <Route path='/video-search' component={VideoSearch}/>
+          {/* testing image search functionality */}
+          <Route path='/image-search' component={ImageSearch}/>
 
           <Route 
             path='/home' 
