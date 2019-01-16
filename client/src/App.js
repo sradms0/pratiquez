@@ -13,6 +13,15 @@ import Home     from './components/Home';
 
 import * as api from './apiRequests';
 
+ 
+/*                         *\
+ * TESTING VideoSearch Component *
+/*                         */
+import VideoSearch from './components/VideoSearch';
+/*                         *\
+ * TESTING VideoSearch Component *
+/*                         */
+
 export default class App extends Component {
   state = {
     user: null,
@@ -43,6 +52,9 @@ export default class App extends Component {
         <div className='container'>
 
           <Route exact path='/' render={ () => <Redirect to='/home' /> } />
+
+          {/* testing video search functionality */}
+          <Route path='/video-search' component={VideoSearch}/>
 
           <Route 
             path='/home' 
