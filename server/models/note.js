@@ -22,7 +22,8 @@ const NoteSchema = new Schema({
   
   videos: {
     type: [{
-      type: String
+      type: Schema.Types.ObjectId,
+      ref:  'video'
     }]
   },
 
