@@ -14,19 +14,25 @@ export default class VideoItem extends Component {
 
   modalOnClose = () => this.modalToggleOpen();
 
+  placeThumbnail = url => (
+    <Image src={url} />
+  )
+
   render() {
-    const { video } = this.props;
+    const { video, searched } = this.props;
     return (
+      // place image next to or in content based on if youtube api search was used
       <List.Item >
-        <Image src={video.snippet.thumbnails.default.url} />
+        {searched ? this.placeThumbnail(video.thumbnailURL) : null}
         <List.Content>
+          {!searched ? this.placeThumbnail(video.thumbnailURL) : null}
           <List.Header>
-            {video.snippet.title}
+            {video.title}
           </List.Header>
 
           <List.Description>
             <Container>
-              {video.snippet.description}
+              {video.description}
             </Container>
           </List.Description>
 
@@ -43,7 +49,7 @@ export default class VideoItem extends Component {
             modalOnClose={this.modalOnClose}
             modalOpen={this.state.modal.open}
             modalToggleOpen={this.modalToggleOpen}
-            videoId={video.id.videoId}
+            videoId={video.videoId}
           />
 
         </List.Content>
