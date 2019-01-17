@@ -34,7 +34,7 @@ exports.registerNote = (req, res, next) => {
   User.findById(req.session.userId)
     .then(user => {
       // get section for note
-      Section.findOne({_id: req.params.sectionId}, {_id: true})
+      Section.findOne({ _id: req.params.sectionId })
         .then(section => {
           // make sure section exists
           if (!section) {
