@@ -61,7 +61,7 @@ export default class App extends Component {
           <Route exact path='/' render={ () => <Redirect to='/home' /> } />
 
           {/* testing video search functionality */}
-          <Route path='/video-search' component={VideoSearch}/>
+          <Route path='/video-search' render={() => <VideoSearch api={api} />}/>
           {/* testing image search functionality */}
           <Route path='/image-search' component={ImageSearch}/>
 
