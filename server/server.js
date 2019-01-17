@@ -46,6 +46,7 @@ const courseRoutes  = require('./routes/course')(app);
 const sectionRoutes = require('./routes/section')(app);
 const termRoutes    = require('./routes/term')(app);
 const noteRoutes    = require('./routes/note')(app);
+const videoRoutes   = require('./routes/video')(app);
 
 // send 404 if no route is matched
 app.use((req, res) => {
