@@ -10,6 +10,11 @@ const NoteSchema = new Schema({
     auto: true
   },
 
+  title: {
+    type:     String,
+    required: true
+  },
+
   text: {
     type: String
   },
