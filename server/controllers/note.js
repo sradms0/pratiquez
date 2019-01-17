@@ -6,10 +6,24 @@ const Section   = require('../models/section');
 const User      = require('../models/user');
 
 exports.allNotes = (req, res, next) => {
+  // find all notes under user
+  Note.find({ user: req.session.userId })    
+    .populate({ path: 'section',
+      populate: { path: 'course' }
+    })
+    .populate({ path: 'videos'})
+    .populate({ path: 'user', select: 'email'})
+    .then(note => res.json(note))
+    .catch(err => next(err));
+};
+
+exports.allSectionNotes = (req, res, next) => {
   // find all notes for section
   Note.find({ section: req.params.sectionId })
-    .populate({ path: 'section', select: 'title'})
-    .populate({ path: 'user', select: 'email'})
+    .populate({ path: 'section',
+      populate: { path: 'course' }
+    })
+    .populate({ path: 'videos'})
     .then(note => res.json(note))
     .catch(err => next(err));
 };
