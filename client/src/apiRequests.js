@@ -41,3 +41,7 @@ export const notes = {
   delete: noteId => axios.delete(`/api/notes/${noteId}`),
   register: data => axios.post('/api/notes', data)
 };
+
+export const videos = {
+  register: (noteId, data) => axios.post(`/api/notes/${noteId}/videos`, data)
+};
