@@ -32,12 +32,14 @@ const VideoSchema = new Schema({
 
   thumbnailHeight: {
     type: Number,
-    required: true
+    required: true,
+    default: 90
   },
 
   thumbnailwidth: {
     type: Number,
-    required: true
+    required: true,
+    default: 120
   },
 
   note: {
