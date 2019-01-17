@@ -4,6 +4,7 @@ import { Container, Header, Accordion, Icon, Divider} from 'semantic-ui-react';
 import CourseList from './CourseList';
 import SectionList from './SectionList';
 import TermList from './TermList';
+import NoteList from './NoteList';
 
 export default class Main extends Component {
   state = { 
@@ -35,7 +36,7 @@ export default class Main extends Component {
   }
 
   fetchAllLists = () => {
-    ['courses', 'sections', 'terms']
+    ['courses', 'sections', 'notes', 'terms']
       .forEach(i => this.fetchListHandler(i));
   }
 
@@ -68,9 +69,7 @@ export default class Main extends Component {
             <span>Notes: {notes.count}</span>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 2}>
-            <p>
-              notes listed
-            </p>
+            <NoteList api={this.props.api} data={notes.data} updateList={this.fetchListHandler}/>
           </Accordion.Content>
           <Divider />
 
