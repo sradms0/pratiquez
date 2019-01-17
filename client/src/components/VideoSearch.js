@@ -46,7 +46,7 @@ export default class VideoSearch extends Component {
     return (
       <div>
         <SearchBar searchType={this.videoSearch}/>
-        <VideoList videos={this.state.videos} />
+        <VideoList searched={true} data={this.state.videos} />
       </div>
     );
   }
