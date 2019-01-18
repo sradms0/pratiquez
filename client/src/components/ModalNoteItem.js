@@ -25,7 +25,7 @@ export default function ModalNoteItem(props) {
               <List.Header>
                 videos: {props.videoCount}
               </List.Header>
-              {props.videosAddView()}
+              {props.videoCount ? props.videosAddView() : null}
             </List.Content>
           </List.Item>
 
