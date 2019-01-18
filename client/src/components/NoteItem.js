@@ -16,7 +16,7 @@ export default class NoteItem extends Component {
     const { section } = this.props.note;
     const ScrollableContainer = styled(Container)`
       &&& {
-        height: 300px;
+        height: 250px;
         overflow: scroll;
       }
     `
