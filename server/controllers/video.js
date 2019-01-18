@@ -40,3 +40,12 @@ exports.registerVideo = (req, res, next) => {
     })
     .catch(err => next(err));
 };
+
+exports.deleteVideo = (req, res, next) => {
+  Video.findByIdAndDelete(req.params.videoId)
+    .then(() => res.status(204).end())
+    .catch(err => { 
+      err.status = 400;
+      return next(err); 
+    });
+}
