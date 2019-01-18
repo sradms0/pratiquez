@@ -11,7 +11,7 @@ export default function ModalVideoItem(props) {
       <Modal.Content>
         <Container>
           <Embed
-            autoplay={false}
+            autoplay={true}
             color='white'
             hd={false}
             id={props.videoId}
