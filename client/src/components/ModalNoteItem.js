@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button, Container, List, Modal } from 'semantic-ui-react';
 
+// Components
+import VideoSearch from 'VideoSearch';
+
 export default function ModalNoteItem(props) {
   return (
     <Modal 
