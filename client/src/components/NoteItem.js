@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, List, Button, Modal, Form } from 'semantic-ui-react'
+import styled from 'styled-components';
 
 import ModalNoteItem  from './ModalNoteItem';
 import VideoList      from './VideoList';
@@ -13,8 +14,16 @@ export default class NoteItem extends Component {
 
   videosAddView = () => {
     const { section } = this.props.note;
+    const ScrollableContainer = styled(Container)`
+      &&& {
+        height: 300px;
+        overflow: scroll;
+      }
+    `
     return (
-      <VideoList searched={false} data={this.props.note.videos}/>
+      <ScrollableContainer>
+        <VideoList searched={false} data={this.props.note.videos}/>
+      </ScrollableContainer>
     );
   }
 
