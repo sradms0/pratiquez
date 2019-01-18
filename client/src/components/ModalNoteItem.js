@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Modal } from 'semantic-ui-react';
+import { Button, Container, List, Modal } from 'semantic-ui-react';
 
 export default function ModalNoteItem(props) {
   return (
@@ -24,6 +24,9 @@ export default function ModalNoteItem(props) {
             <List.Content>
               <List.Header>
                 videos: {props.videoCount}
+                <Container align='center'>
+                  <Button color='green' icon='plus' size='mini' />
+                </Container>
               </List.Header>
               {props.videoCount ? props.videosAddView() : null}
             </List.Content>
