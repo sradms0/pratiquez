@@ -41,7 +41,7 @@ export default class VideoItem extends Component {
               Watch
             </Button>          
             <Button size='mini' secondary onClick={this.modalToggleOpen}>
-              Add
+              {searched ? 'Add' : 'Delete'}
             </Button>          
           </Container>
 
