@@ -50,6 +50,10 @@ export default class ModalNoteItem extends Component {
                   modalVideoSearchOnClose={this.modalVideoSearchOnClose}
                   modalVideoSearchOpen={this.state.modalVideoSearch.open}
                   modalVideoSearchToggleOpen={this.modalVideoSearchToggleOpen}
+
+                  api={this.props.api}
+                  note={this.props.note}
+                  updateList={this.props.updateList}
                 /> 
       
               </List.Content>
