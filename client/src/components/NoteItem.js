@@ -22,7 +22,13 @@ export default class NoteItem extends Component {
     `
     return (
       <ScrollableContainer>
-        <VideoList searched={false} data={this.props.note.videos}/>
+        <VideoList 
+          searched={false} 
+          data={this.props.note.videos} 
+          api={this.props.api} 
+          note={this.props.note}
+          updateList={this.props.updateList}
+        />
       </ScrollableContainer>
     );
   }
@@ -121,6 +127,10 @@ export default class NoteItem extends Component {
             sectionCourseAddView={this.sectionCourseAddView}
             videosAddView={this.videosAddView}
             videoCount={this.props.note.videos.length}
+
+            api={this.props.api}
+            note={this.props.note}
+            updateList={this.props.updateList}
           />
         </List.Content>
       </List.Item>
