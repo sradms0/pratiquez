@@ -3,6 +3,7 @@ import { List } from 'semantic-ui-react';
 import VideoItem from './VideoItem';
 
 export default function VideoList(props) {
+
   const { data, searched } = props;
 
   if (data)  {
@@ -19,9 +20,20 @@ export default function VideoList(props) {
         })
       );
     }
-    const videoItems = videos.map(video => (
-      <VideoItem searched={props.searched} key={video.videoId} video={video}/>
-    ));
+
+    const videoItems = videos.map(video => {
+      return (
+        <VideoItem 
+          searched={props.searched} 
+          key={video.videoId}
+          video={video} 
+          api={props.api} 
+          note={props.note} 
+          updateList={props.updateList}
+        />
+      );
+    });
+
     return (
       <List celled>
         {videoItems}
