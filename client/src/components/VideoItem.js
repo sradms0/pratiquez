@@ -18,8 +18,30 @@ export default class VideoItem extends Component {
     <Image src={url} />
   )
 
+  addOnClick = (note, video) => {
+    this.props.api.videos.register(note._id, video)
+      .then(() => this.props.updateList('notes'))
+      
+  }
+
+  deleteOnClick = (note=undefined, video) => {
+    this.props.api.videos.delete(video._id)
+      .then(() => this.props.updateList('notes'))
+  }
+
+  setActionButton = (searched, note, video) => {
+    const label = searched ? 'Add' : 'Delete';
+    const onClick = searched ? this.addOnClick : this.deleteOnClick;
+    return (
+      <Button size='mini' secondary onClick={() => onClick(note, video)}>
+        {label}
+      </Button>          
+    );
+  }
+
   render() {
-    const { video, searched } = this.props;
+    const { searched, note, video } = this.props;
+    //console.log(video);
     return (
       // place image next to or in content based on if youtube api search was used
       <List.Item >
@@ -40,9 +62,7 @@ export default class VideoItem extends Component {
             <Button size='mini' primary onClick={this.modalToggleOpen}>
               Watch
             </Button>          
-            <Button size='mini' secondary onClick={this.modalToggleOpen}>
-              {searched ? 'Add' : 'Delete'}
-            </Button>          
+            {this.setActionButton(searched, note, video)}
           </Container>
 
           <ModalVideoItem 
