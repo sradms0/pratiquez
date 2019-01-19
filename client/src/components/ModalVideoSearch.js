@@ -7,12 +7,12 @@ import VideoSearch from './VideoSearch';
 export default function ModalVideoSearch(props) {
   return (
     <Modal 
-      size='big'
+      size='large'
       open={props.modalVideoSearchOpen}
       onClose={props.modalVideoSearchOnClose}
     >
       <Modal.Content>
-        <VideoSearch />
+        <VideoSearch api={props.api} note={props.note} updateList={props.updateList}/>
       </Modal.Content>
     </Modal>
   );
