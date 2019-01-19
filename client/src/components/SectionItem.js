@@ -71,7 +71,6 @@ export default class SectionItem extends Component {
 
 
   render() {
-    console.log(this.props.section);
     return (
       <List.Item>
         <List.Content>
