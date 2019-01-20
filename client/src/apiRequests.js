@@ -39,7 +39,7 @@ export const notes = {
   single: (sectionId, noteId) => axios.get(`/api/sections/${sectionId}/notes/${noteId}`),
   update: (noteId, data) => axios.put(`/api/notes/${noteId}`, data),
   delete: noteId => axios.delete(`/api/notes/${noteId}`),
-  register: data => axios.post('/api/notes', data)
+  register: (sectionId, data) => axios.post(`/api/sections/${sectionId}/notes`, data)
 };
 
 export const videos = {
