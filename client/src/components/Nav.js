@@ -21,6 +21,15 @@ export default class Nav extends Component {
     return (
       <Menu compact icon>
         <Menu.Item header>{this.props.user.email}</Menu.Item>
+
+        <Menu.Item 
+          name='plus' 
+          active={activeItem === 'plus'} 
+          onClick={() => console.log('coming soon')}
+        >
+          <Icon name='plus' size={iconSize}/>
+        </Menu.Item>
+
         <Menu.Item name='setting' active={activeItem === 'setting'} onClick={() => console.log('coming soon')}>
           <Icon name='setting' size={iconSize}/>
         </Menu.Item>
