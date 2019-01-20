@@ -4,6 +4,7 @@ import { Container, Embed, Modal } from 'semantic-ui-react';
 export default function ModalVideoItem(props) {
   return (
     <Modal
+      basic
       size='small'
       open={props.modalOpen}
       onClose={props.modalOnClose}
