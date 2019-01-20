@@ -47,7 +47,7 @@ export default class Main extends Component {
     const iconSize = 'large';
     return (
       <div>
-        <Nav api={this.props.api} updateList={this.fetchListHandler} user={this.props.user} userState={this.props.userState}/>
+        <Nav api={this.props.api} updateList={this.fetchListHandler} user={this.props.user} userState={this.props.userState} errState={this.props.errState}/>
         <Container align='center'>
           <Accordion>
             <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
