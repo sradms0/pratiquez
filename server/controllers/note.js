@@ -12,6 +12,7 @@ exports.allNotes = (req, res, next) => {
       populate: { path: 'course' }
     })
     .populate({ path: 'videos'})
+    .populate({ path: 'images'})
     .populate({ path: 'user', select: 'email'})
     .then(note => res.json(note))
     .catch(err => next(err));
@@ -24,6 +25,7 @@ exports.allSectionNotes = (req, res, next) => {
       populate: { path: 'course' }
     })
     .populate({ path: 'videos'})
+    .populate({ path: 'images'})
     .then(note => res.json(note))
     .catch(err => next(err));
 };
