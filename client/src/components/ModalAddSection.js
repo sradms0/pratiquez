@@ -70,8 +70,8 @@ export default class ModalAddSection extends Component {
             />
             <Form.Select
               fluid
-              label='courses'
-              name='courses'
+              label='course'
+              name='course'
               options={this.state.courseOptions}
               placeholder='select a course...'
               onChange={this.courseIdOnChangeHandler}
