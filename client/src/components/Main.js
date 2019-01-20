@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Header, Accordion, Icon, Divider} from 'semantic-ui-react';
 
+// Components
+import Nav  from './Nav';
 import CourseList from './CourseList';
 import SectionList from './SectionList';
 import TermList from './TermList';
@@ -44,45 +46,48 @@ export default class Main extends Component {
     const { activeIndex, courses, sections, notes, terms } = this.state;
     const iconSize = 'large';
     return (
-      <Container align='center'>
-        <Accordion>
-          <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
-            <Icon name='book' size={iconSize}/>
-            <span>Courses: {courses.count}</span>
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 0}>
-            <CourseList api={this.props.api} data={courses.data} updateList={this.fetchListHandler}/>
-          </Accordion.Content>
-          <Divider />
+      <div>
+        <Nav api={this.props.api} updateList={this.fetchListHandler} user={this.props.user} userState={this.props.userState}/>
+        <Container align='center'>
+          <Accordion>
+            <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+              <Icon name='book' size={iconSize}/>
+              <span>Courses: {courses.count}</span>
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 0}>
+              <CourseList api={this.props.api} data={courses.data} updateList={this.fetchListHandler}/>
+            </Accordion.Content>
+            <Divider />
 
-          <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
-            <Icon name='bookmark' size={iconSize}/>
-            <span>Sections: {sections.count}</span>
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 1}>
-            <SectionList api={this.props.api} data={sections.data} updateList={this.fetchListHandler}/>
-          </Accordion.Content>
-          <Divider />
+            <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
+              <Icon name='bookmark' size={iconSize}/>
+              <span>Sections: {sections.count}</span>
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 1}>
+              <SectionList api={this.props.api} data={sections.data} updateList={this.fetchListHandler}/>
+            </Accordion.Content>
+            <Divider />
 
-          <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
-            <Icon name='pencil' size={iconSize}/>
-            <span>Notes: {notes.count}</span>
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 2}>
-            <NoteList api={this.props.api} data={notes.data} updateList={this.fetchListHandler}/>
-          </Accordion.Content>
-          <Divider />
+            <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
+              <Icon name='pencil' size={iconSize}/>
+              <span>Notes: {notes.count}</span>
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 2}>
+              <NoteList api={this.props.api} data={notes.data} updateList={this.fetchListHandler}/>
+            </Accordion.Content>
+            <Divider />
 
-          <Accordion.Title active={activeIndex === 3} index={3} onClick={this.handleClick}>
-            <Icon name='question' size={iconSize}/>
-            <span>Terms: {terms.count}</span>
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === 3}>
-            <TermList api={this.props.api} data={terms.data} updateList={this.fetchListHandler}/>
-          </Accordion.Content>
-          <Divider />
-        </Accordion>
-      </Container>
+            <Accordion.Title active={activeIndex === 3} index={3} onClick={this.handleClick}>
+              <Icon name='question' size={iconSize}/>
+              <span>Terms: {terms.count}</span>
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === 3}>
+              <TermList api={this.props.api} data={terms.data} updateList={this.fetchListHandler}/>
+            </Accordion.Content>
+            <Divider />
+          </Accordion>
+        </Container>
+      </div>
     )
   }
 }

@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom'
 import { NavLink, Redirect } from 'react-router-dom'
 
-import Nav  from './Nav';
 import Main from './Main';
 
 export default function Home(props) {
@@ -15,7 +14,6 @@ export default function Home(props) {
   }
   return (
     <div>
-      <Nav api={props.api} user={props.user} userState={props.userState}/>
       <Route exact path='/home' render={ () => <Main api={props.api} user={props.user}/> }/>
       <Route path='/home/courses' render={ () => <div>{'courses'}</div> }/>
       <Route path='/home/sections' render={ () => <div>{'sections'}</div> }/>
