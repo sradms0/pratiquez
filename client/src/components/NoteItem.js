@@ -4,7 +4,14 @@ import styled from 'styled-components';
 
 import ModalNoteItem  from './ModalNoteItem';
 import VideoList      from './VideoList';
+import ImageList      from './ImageList';
 
+const ScrollableContainer = styled(Container)`
+  &&& {
+    height: 250px;
+    overflow: scroll;
+  }
+`
 export default class NoteItem extends Component {
   state = {
     title: {value: this.props.note.title},
@@ -13,18 +20,25 @@ export default class NoteItem extends Component {
   }
 
   videosAddView = () => {
-    const { section } = this.props.note;
-    const ScrollableContainer = styled(Container)`
-      &&& {
-        height: 250px;
-        overflow: scroll;
-      }
-    `
     return (
       <ScrollableContainer>
         <VideoList 
           searched={false} 
           data={this.props.note.videos} 
+          api={this.props.api} 
+          note={this.props.note}
+          updateList={this.props.updateList}
+        />
+      </ScrollableContainer>
+    );
+  }
+
+  imagesAddView = () => {
+    return (
+      <ScrollableContainer>
+        <ImageList 
+          searched={false} 
+          data={this.props.note.images} 
           api={this.props.api} 
           note={this.props.note}
           updateList={this.props.updateList}
@@ -124,9 +138,14 @@ export default class NoteItem extends Component {
             textOnChange={this.textOnChange}
             noteAddForm={this.noteAddForm}
             noteFormSubmitHandler={this.noteFormSubmitHandler}
+
             sectionCourseAddView={this.sectionCourseAddView}
+
             videosAddView={this.videosAddView}
             videoCount={this.props.note.videos.length}
+
+            imagesAddView={this.imagesAddView}
+            imagesCount={this.props.note.images.length}
 
             api={this.props.api}
             note={this.props.note}
