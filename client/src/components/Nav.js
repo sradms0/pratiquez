@@ -6,12 +6,14 @@ import axios from  'axios';
 // Components
 import ModalAddCourse   from './ModalAddCourse';
 import ModalAddSection  from './ModalAddSection';
+import ModalAddNote     from './ModalAddNote';
 
 export default class Nav extends Component {
   state = { 
    activeItem: null,
    modalAddCourse:  { open: false },
-   modalAddSection: { open: false }
+   modalAddSection: { open: false },
+   modalAddNote:    { open: false }
   }
 
   modalAddCourseToggleOpen = () => {
@@ -22,12 +24,20 @@ export default class Nav extends Component {
     this.setState(prevState => ({ modalAddSection: {open: !prevState.modalAddSection.open} }))
   }
 
+  modalAddNoteToggleOpen = () => {
+    this.setState(prevState => ({ modalAddNote: {open: !prevState.modalAddNote.open} }))
+  }
+
   modalAddCourseOnClose = () => {
     if (this.state.modalAddCourse.open) this.modalAddCourseToggleOpen();
   }
 
   modalAddSectionOnClose = () => {
     if (this.state.modalAddSection.open) this.modalAddSectionToggleOpen();
+  }
+
+  modalAddNoteOnClose = () => {
+    if (this.state.modalAddNote.open) this.modalAddNoteToggleOpen();
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -50,6 +60,7 @@ export default class Nav extends Component {
           <Dropdown.Menu>
             <Dropdown.Item icon='book' text='Course' onClick={this.modalAddCourseToggleOpen}/>
             <Dropdown.Item icon='bookmark' text='Section' onClick={this.modalAddSectionToggleOpen}/>
+            <Dropdown.Item icon='pencil' text='Note' onClick={this.modalAddNoteToggleOpen}/>
           </Dropdown.Menu>
         </Dropdown>
 
@@ -78,6 +89,15 @@ export default class Nav extends Component {
           modalAddSectionOnClose={this.modalAddSectionOnClose}
           modalAddSectionOpen={this.state.modalAddSection.open}
           modalAddSectionToggleOpen={this.modalAddSectionToggleOpen}
+
+          api={this.props.api}
+          updateList={this.props.updateList}
+        />
+
+        <ModalAddNote 
+          modalAddNoteOnClose={this.modalAddNoteOnClose}
+          modalAddNoteOpen={this.state.modalAddNote.open}
+          modalAddNoteToggleOpen={this.modalAddNoteToggleOpen}
 
           api={this.props.api}
           updateList={this.props.updateList}
