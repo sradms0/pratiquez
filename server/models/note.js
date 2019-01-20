@@ -21,7 +21,8 @@ const NoteSchema = new Schema({
 
   images: {
     type: [{
-      type: String
+      type: Schema.Types.ObjectId,
+      ref:  'image'
     }]
   },
   
