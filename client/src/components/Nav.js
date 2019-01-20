@@ -94,6 +94,8 @@ export default class Nav extends Component {
 
           api={this.props.api}
           updateList={this.props.updateList}
+
+          errState={this.props.errState}
         />
 
         <ModalAddSection 
@@ -103,6 +105,8 @@ export default class Nav extends Component {
 
           api={this.props.api}
           updateList={this.props.updateList}
+
+          errState={this.props.errState}
         />
 
         <ModalAddNote 
@@ -112,6 +116,8 @@ export default class Nav extends Component {
 
           api={this.props.api}
           updateList={this.props.updateList}
+
+          errState={this.props.errState}
         />
 
         <ModalAddTerm 
@@ -121,6 +127,8 @@ export default class Nav extends Component {
 
           api={this.props.api}
           updateList={this.props.updateList}
+
+          errState={this.props.errState}
         />
 
       </Menu>
