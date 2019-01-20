@@ -80,8 +80,8 @@ export default class ModalAddNote extends Component {
             />
             <Form.Select
               fluid
-              label='sections'
-              name='sections'
+              label='section'
+              name='section'
               options={this.state.sectionOptions}
               placeholder='select a section...'
               onChange={this.sectionIdOnChangeHandler}
