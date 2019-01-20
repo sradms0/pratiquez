@@ -47,6 +47,7 @@ const sectionRoutes = require('./routes/section')(app);
 const termRoutes    = require('./routes/term')(app);
 const noteRoutes    = require('./routes/note')(app);
 const videoRoutes   = require('./routes/video')(app);
+const imageRoutes   = require('./routes/image')(app);
 
 // send 404 if no route is matched
 app.use((req, res) => {
