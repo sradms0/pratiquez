@@ -21,7 +21,7 @@ export const sections = {
   single: (courseId, sectionId) => axios.get(`/api/courses/${courseId}/sections/${sectionId}`),
   update: (sectionId, data) => axios.put(`/api/sections/${sectionId}`, data),
   delete: sectionId => axios.delete(`/api/sections/${sectionId}`),
-  register: data => axios.post('/api/sections', data)
+  register: (courseId, data) => axios.post(`/api/courses/${courseId}/sections`, data)
 };
 
 export const terms = {
