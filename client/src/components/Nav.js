@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
-import { Menu, Icon } from 'semantic-ui-react'
+import { Dropdown, Menu, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import axios from  'axios';
 
+// Components
+import ModalAddCourse from './ModalAddCourse';
+
 export default class Nav extends Component {
-  state = { activeItem: null }
+  state = { 
+   activeItem: null,
+   modalAddCourse: { open: false }
+  }
+
+  modalAddCourseToggleOpen = () => {
+    this.setState(prevState => ({ modalAddCourse: {open: !prevState.modalAddCourse.open} }))
+  }
+
+  modalAddCourseOnClose = () => {
+    if (this.state.modalAddCourse.open) this.modalAddCourseToggleOpen();
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -22,13 +36,11 @@ export default class Nav extends Component {
       <Menu compact icon>
         <Menu.Item header>{this.props.user.email}</Menu.Item>
 
-        <Menu.Item 
-          name='plus' 
-          active={activeItem === 'plus'} 
-          onClick={() => console.log('coming soon')}
-        >
-          <Icon name='plus' size={iconSize}/>
-        </Menu.Item>
+        <Dropdown icon='plus' item button>
+          <Dropdown.Menu>
+            <Dropdown.Item icon='book' text='Course' onClick={this.modalAddCourseToggleOpen}/>
+          </Dropdown.Menu>
+        </Dropdown>
 
         <Menu.Item name='setting' active={activeItem === 'setting'} onClick={() => console.log('coming soon')}>
           <Icon name='setting' size={iconSize}/>
@@ -41,6 +53,15 @@ export default class Nav extends Component {
         >
           <Icon name='log out' size={iconSize}/>
         </Menu.Item>
+
+        <ModalAddCourse 
+          modalAddCourseOnClose={this.modalAddCourseOnClose}
+          modalAddCourseOpen={this.state.modalAddCourse.open}
+          modalAddCourseToggleOpen={this.modalAddCourseToggleOpen}
+
+          api={this.props.api}
+          updateList={this.props.updateList}
+        />
       </Menu>
     )
   }
