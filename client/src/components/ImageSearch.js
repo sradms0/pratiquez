@@ -17,6 +17,7 @@ export default class ImageSearch extends Component {
       method=flickr.photos.search&
       api_key=${keys.flickr}&
       tags=${query}&
+      extras=description,url_q,url_c&
       per_page=24&
       format=json&
       nojsoncallback=1`
@@ -28,7 +29,13 @@ export default class ImageSearch extends Component {
     return (
       <div>
         <SearchBar searchType={this.imageSearch}/>
-        <ImageList images={this.state.images} />
+        <ImageList 
+          searched={true} 
+          data={this.state.images} 
+          api={this.props.api}
+          note={this.props.note}
+          updateList={this.props.updateList}
+        />
       </div>
     );
   }
