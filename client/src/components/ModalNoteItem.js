@@ -3,18 +3,28 @@ import { Button, Container, List, Modal } from 'semantic-ui-react';
 
 // Components
 import ModalVideoSearch from './ModalVideoSearch';
+import ModalImageSearch from './ModalImageSearch';
 
 export default class ModalNoteItem extends Component {
   state = { 
-    modalVideoSearch: { open: false } 
+    modalVideoSearch: { open: false },
+    modalImageSearch: { open: false } 
   }
 
   modalVideoSearchOnClose = () => {
     if (this.state.modalVideoSearch.open) this.modalVideoSearchToggleOpen()
   }
 
+  modalImageSearchOnClose = () => {
+    if (this.state.modalImageSearch.open) this.modalImageSearchToggleOpen()
+  }
+
  modalVideoSearchToggleOpen = () => {
     this.setState(prevState => ({ modalVideoSearch: {open: !prevState.modalVideoSearch.open} }));
+  }
+
+ modalImageSearchToggleOpen = () => {
+    this.setState(prevState => ({ modalImageSearch: {open: !prevState.modalImageSearch.open} }));
   }
 
   render() {
@@ -45,7 +55,6 @@ export default class ModalNoteItem extends Component {
                   </Container>
                 </List.Header>
                 {this.props.videoCount ? this.props.videosAddView() : null}
-
                 <ModalVideoSearch
                   modalVideoSearchOnClose={this.modalVideoSearchOnClose}
                   modalVideoSearchOpen={this.state.modalVideoSearch.open}
@@ -56,6 +65,28 @@ export default class ModalNoteItem extends Component {
                   updateList={this.props.updateList}
                 /> 
       
+              </List.Content>
+            </List.Item>
+
+                
+            <List.Item>
+              <List.Content>
+                <List.Header>
+                  images: {this.props.imagesCount}
+                  <Container align='center'>
+                    <Button onClick={this.modalImageSearchToggleOpen}color='green' icon='plus' size='mini' />
+                  </Container>
+                </List.Header>
+                {this.props.imagesCount ? this.props.imagesAddView() : null}
+                <ModalImageSearch
+                  modalImageSearchOnClose={this.modalImageSearchOnClose}
+                  modalImageSearchOpen={this.state.modalImageSearch.open}
+                  modalImageSearchToggleOpen={this.modalImageSearchToggleOpen}
+
+                  api={this.props.api}
+                  note={this.props.note}
+                  updateList={this.props.updateList}
+                /> 
               </List.Content>
             </List.Item>
 
