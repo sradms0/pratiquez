@@ -13,22 +13,6 @@ import Home     from './components/Home';
 
 import * as api from './apiRequests';
 
- 
-/*                         *\
- * TESTING VideoSearch Component *
-/*                         */
-import VideoSearch from './components/VideoSearch';
-/*                         *\
- * TESTING VideoSearch Component *
-/*                         */
-/*                         *\
- * TESTING ImageSearch Component *
-/*                         */
-import ImageSearch from './components/ImageSearch';
-/*                         *\
- * TESTING ImageSearch Component *
-/*                         */
-
 export default class App extends Component {
   state = {
     user: null,
@@ -59,11 +43,6 @@ export default class App extends Component {
         <div className='container'>
 
           <Route exact path='/' render={ () => <Redirect to='/home' /> } />
-
-          {/* testing video search functionality */}
-          <Route path='/video-search' render={() => <VideoSearch api={api} />}/>
-          {/* testing image search functionality */}
-          <Route path='/image-search' component={ImageSearch}/>
 
           <Route 
             path='/home' 
