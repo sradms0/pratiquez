@@ -21,9 +21,6 @@ export default function ModalTermItem(props) {
           </List.Item>
 
           <List.Item>
-            <List.Header>
-              {/*TODO: something...*/}
-            </List.Header>
             {props.sectionCourseAddView()}
           </List.Item>
         </List>
