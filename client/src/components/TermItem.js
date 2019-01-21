@@ -16,14 +16,14 @@ export default class TermItem extends Component {
       <List celled>
         <List.Item>
           <List.Content>
-            <a onClick={() => console.log('coming soon..')}>{section.title}</a>
+            <a onClick={() => console.log('coming soon..')}>section: {section.title}</a>
           </List.Content>
 
         </List.Item>
 
         <List.Item>
           <List.Content>
-            <a onClick={() => console.log('coming soon..')}>{section.course.title}</a>
+            <a onClick={() => console.log('coming soon..')}>course: {section.course.title}</a>
           </List.Content>
         </List.Item>
       </List>
