@@ -96,6 +96,7 @@ export default class Main extends Component {
             However, the architecture of this tool is at a minimal point to where you may test out building items (courses, sections, etc).
             To begin, use the '+' symbol in the navigation menu to create items.
           </p>
+          <p>The "richest" of existing features is the ability to add videos and images to notes. Once a note is created, find the note by its title in the 'Notes' list, click on the title, and click a plus symbol to search and add videos or images to that note.</p>
         </Container>
 
       </div>
