@@ -35,7 +35,7 @@ export const terms = {
 
 export const notes = {
   all: () => axios.get('/api/notes'),
-  allSectionTerms: sectionId => axios.get(`/api/sections/${sectionId}/notes`),
+  allSectionNotes: sectionId => axios.get(`/api/sections/${sectionId}/notes`),
   single: (sectionId, noteId) => axios.get(`/api/sections/${sectionId}/notes/${noteId}`),
   update: (noteId, data) => axios.put(`/api/notes/${noteId}`, data),
   delete: noteId => axios.delete(`/api/notes/${noteId}`),
