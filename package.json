@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"concurrently 'cd server && npm run start-watch' 'cd client && npm start'"
+    "start":"concurrently 'cd server && npm start' 'cd client && npm start'"
   },
   "keywords": [],
   "author": "Scott Adams",
@@ -15,5 +15,8 @@
   "dependencies": {
     "client": "file:./client",
     "server": "file:./server"
+  },
+  "engines": {
+    "node":"8.10.0"
   }
 }
