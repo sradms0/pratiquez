@@ -121,11 +121,11 @@ export default class NoteItem extends Component {
           </List.Header>
 
           <List.Description>
-            {`Videos: ${this.props.note.videos.length}`}
+            {`videos: ${this.props.note.videos.length}`}
           </List.Description>
 
           <List.Description>
-            {`Images: ${this.props.note.images.length}`}
+            {`images: ${this.props.note.images.length}`}
           </List.Description>
 
           <ModalNoteItem 
