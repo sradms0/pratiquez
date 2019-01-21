@@ -13,7 +13,7 @@
     "concurrently": "^4.1.0"
   },
   "dependencies": {
-    "client": "file://client",
-    "server": "file://server"
+    "client": "file:./client",
+    "server": "file:./server"
   }
 }
