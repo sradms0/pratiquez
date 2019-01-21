@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 const { db, secret } = require('./config/keys');
 
 // connect to db
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || db, { useNewUrlParser: true })
   .then(() => console.log('connected to pratiquez database'))
   .catch(err => console.log(err));
 
