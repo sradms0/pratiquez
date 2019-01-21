@@ -22,6 +22,13 @@ export default function ModalCourseItem(props) {
 
             <List.Item>
               <List.Header>
+                notes: {props.notesCount}
+              </List.Header>
+              {props.notesCount ? props.notesAddView() : null}
+            </List.Item>
+
+            <List.Item>
+              <List.Header>
                 terms: {props.termsCount}
               </List.Header>
               {props.termsCount ? props.termsAddView() : null}
