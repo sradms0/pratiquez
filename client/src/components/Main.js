@@ -87,6 +87,17 @@ export default class Main extends Component {
             <Divider />
           </Accordion>
         </Container>
+
+        <Container align='left' text>
+          <Header as='h2'>Welcome to pratiquez!</Header>
+          <Header as='h4'>A Study Application</Header>
+          <p>
+            This application is currently in production with many features lacking. Mainly, its study feature.
+            However, the architecture of this tool is at a minimal point to where you may test out building items (courses, sections, etc).
+            To begin, use the '+' symbol in the navigation menu to create items.
+          </p>
+        </Container>
+
       </div>
     )
   }
