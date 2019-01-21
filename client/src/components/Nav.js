@@ -18,6 +18,58 @@ export default class Nav extends Component {
    modalAddTerm:    { open: false }
   }
 
+  modalAddCourseView = () => (
+    <ModalAddCourse 
+      modalAddCourseOnClose={this.modalAddCourseOnClose}
+      modalAddCourseOpen={this.state.modalAddCourse.open}
+      modalAddCourseToggleOpen={this.modalAddCourseToggleOpen}
+
+      api={this.props.api}
+      updateList={this.props.updateList}
+
+      errState={this.props.errState}
+    />
+  )
+
+  modalAddSectionView = () => (
+    <ModalAddSection 
+      modalAddSectionOnClose={this.modalAddSectionOnClose}
+      modalAddSectionOpen={this.state.modalAddSection.open}
+      modalAddSectionToggleOpen={this.modalAddSectionToggleOpen}
+
+      api={this.props.api}
+      updateList={this.props.updateList}
+
+      errState={this.props.errState}
+    />
+  )
+
+  modalAddNoteView = () => (
+    <ModalAddNote 
+      modalAddNoteOnClose={this.modalAddNoteOnClose}
+      modalAddNoteOpen={this.state.modalAddNote.open}
+      modalAddNoteToggleOpen={this.modalAddNoteToggleOpen}
+
+      api={this.props.api}
+      updateList={this.props.updateList}
+
+      errState={this.props.errState}
+    />
+  )
+
+  modalAddTermView = () => (
+    <ModalAddTerm 
+      modalAddTermOnClose={this.modalAddTermOnClose}
+      modalAddTermOpen={this.state.modalAddTerm.open}
+      modalAddTermToggleOpen={this.modalAddTermToggleOpen}
+
+      api={this.props.api}
+      updateList={this.props.updateList}
+
+      errState={this.props.errState}
+    />
+  )
+
   modalAddCourseToggleOpen = () => {
     this.setState(prevState => ({ modalAddCourse: {open: !prevState.modalAddCourse.open} }))
   }
@@ -87,50 +139,22 @@ export default class Nav extends Component {
           <Icon name='log out' size={iconSize}/>
         </Menu.Item>
 
-        <ModalAddCourse 
-          modalAddCourseOnClose={this.modalAddCourseOnClose}
-          modalAddCourseOpen={this.state.modalAddCourse.open}
-          modalAddCourseToggleOpen={this.modalAddCourseToggleOpen}
-
-          api={this.props.api}
-          updateList={this.props.updateList}
-
-          errState={this.props.errState}
-        />
-
-        <ModalAddSection 
-          modalAddSectionOnClose={this.modalAddSectionOnClose}
-          modalAddSectionOpen={this.state.modalAddSection.open}
-          modalAddSectionToggleOpen={this.modalAddSectionToggleOpen}
-
-          api={this.props.api}
-          updateList={this.props.updateList}
-
-          errState={this.props.errState}
-        />
-
-        <ModalAddNote 
-          modalAddNoteOnClose={this.modalAddNoteOnClose}
-          modalAddNoteOpen={this.state.modalAddNote.open}
-          modalAddNoteToggleOpen={this.modalAddNoteToggleOpen}
-
-          api={this.props.api}
-          updateList={this.props.updateList}
-
-          errState={this.props.errState}
-        />
-
-        <ModalAddTerm 
-          modalAddTermOnClose={this.modalAddTermOnClose}
-          modalAddTermOpen={this.state.modalAddTerm.open}
-          modalAddTermToggleOpen={this.modalAddTermToggleOpen}
-
-          api={this.props.api}
-          updateList={this.props.updateList}
-
-          errState={this.props.errState}
-        />
-
+        {this.state.modalAddCourse.open ? 
+          this.modalAddCourseView()
+          : null
+        }
+        {this.state.modalAddSection.open ? 
+          this.modalAddSectionView()
+          : null
+        }
+        {this.state.modalAddNote.open ? 
+          this.modalAddNoteView()
+          : null
+        }
+        {this.state.modalAddTerm.open ? 
+          this.modalAddTermView()
+          : null
+        }
       </Menu>
     )
   }
