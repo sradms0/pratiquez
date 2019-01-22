@@ -72,7 +72,7 @@ app.use((err, req, res, next) => {
 
 // send react's index.html file if no request matches
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname+'../client/build/index.html'));
 });
 
 // start server
