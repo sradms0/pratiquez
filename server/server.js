@@ -5,10 +5,14 @@ const bodyParser  = require('body-parser');
 const logger      = require('morgan');
 const mongoose    = require('mongoose');
 const session     = require('express-session');
+const path        = require('path');
 
 // create app and set up port
 const app = express();
 const port = process.env.PORT || 5000;
+
+// serve static files from react app
+app.use(express.static(path.join(__dirname, '../client/build')))
 
 // db,secret config
 const { db, secret } = require('./config/keys');
@@ -64,6 +68,11 @@ app.use((err, req, res, next) => {
     error: {}
   });
   next();
+});
+
+// send react's index.html file if no request matches
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 // start server
