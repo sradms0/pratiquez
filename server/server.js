@@ -75,11 +75,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-// send react's index.html file if no request matches
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
-
 // start server
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
