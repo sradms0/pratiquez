@@ -1,20 +1,14 @@
-# techdegree-project-12
-Twelfth Techdegree Project - Pratiquer: A Demo of an Online Study Tool
+# pratiquez
+Pratiquez: A Demo of an Online Study Tool
 
-(this application is far from complete)
+(this application is still in development)
 
 To run this project locally,
-Be sure to have MongoDB installed on your system.<br>
+MongoDB must be installed on your system.<br>
 
-Install the dependencies and devDependencies and start the server.<br>
+Install dependencies and devDependencies, and start the server.<br>
 In the root directory, run:
 ```sh
-$ npm install
+$ npm install && npm start
 ```
 
-Fire up the server:
-```sh
-$ npm start
-```
-
-This application is hosted at: https://pratiquez.herokuapp.com
